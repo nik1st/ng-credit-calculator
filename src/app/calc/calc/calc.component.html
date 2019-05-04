@@ -1,0 +1,8 @@
+<div class="row justify-content-center">
+    <div class="col-12 col-sm-12 col-md-8 col-lg-8">
+      <form class="well calcontainer col-12 col-sm-12 col-md-8 col-lg-8">
+        <app-output-window [expressionValue]="expVal" (clickSymb)="onCalcBtnClick($event)"></app-output-window>
+          <app-button-pad (clickBut)="onCalcBtnClick($event)"></app-button-pad>
+      </form>
+    </div>
+</div>
