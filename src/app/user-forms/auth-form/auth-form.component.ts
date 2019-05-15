@@ -21,7 +21,7 @@ export class AuthFormComponent implements OnInit {
   submit(myForm: NgForm){
     this._authService.getUser(myForm.value.login, myForm.value.password).subscribe((result: IdUser)=>{
       this.idUser = result; if(this.idUser.status == 1){
-        this.router.navigate(['/credit']);
+        this.router.navigate(['/credit/allCredits']);
         this._localStorageService.setIdUser(this.idUser.id);
         this._authService.userLogin = myForm.value.login;
 

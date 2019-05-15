@@ -1,12 +1,12 @@
-<a class="btn btn-outline-primary mb-2" routerLink="../../../allCredits">Back</a>
+<a class="btn btn-outline-primary mb-2" routerLink="../../../allCredits">Назад</a>
 <div class="row justify-content-center">
   <div class="col-lg-5 col-md-8 col-sm-12 col-12">
     <div class="card border-secondary mb-3">
-      <h4 class="card-header text-white bg-secondary mb-3">Credit Form:</h4>
+      <h4 class="card-header text-white bg-secondary mb-3">Кредитный калькулятор:</h4>
         <div class="card-body">
           <form [formGroup]="creditForm">
             <div class="form-group row">
-            <label for="input-amountOfCredit" class="col-sm-3" >Amount of credit:</label>
+            <label for="input-amountOfCredit" class="col-sm-3" >Сумма кредита:</label>
               <div class="col-sm-9">
                 <div class="input-group mb-3">
                   <div class="input-group-prepend">
@@ -20,18 +20,15 @@
               </div>
             </div>
             <div class="form-group row">
-            <label for="input-timeOfCredit" class="col-sm-3">Time of credit:</label>
+            <label for="input-timeOfCredit" class="col-sm-3">Кол-во месяцев:</label>
               <div class="col-sm-6">
                 <div class="input-group mb-3">
                 <input type="text" class="form-control form-control-sm" id="input-timeOfCredit" formControlName="timeOfCredit" mask='0*'>
-                  <div class="input-group-append">
-                    <span class="input-group-text">mounths</span>
-                  </div>
                 </div>
               </div>
             </div>
             <div class="form-group row">
-              <label for="input-percentOfCredit" class="col-sm-3">Percent of credict:</label>
+              <label for="input-percentOfCredit" class="col-sm-3">Процент:</label>
               <div class="col-sm-6">
                 <div class="input-group mb-3">
                   <input type="text" class="form-control form-control-sm" id="input-percentOfCredit" formControlName="percentOfCredit">
@@ -42,13 +39,13 @@
               </div>
             </div>
             <div class="form-group row">
-              <label for="input-startingDate" class="col-sm-3">Date of starting credit:</label>
+              <label for="input-startingDate" class="col-sm-3">Дата взятия:</label>
               <div class="col-sm-6">
-                <input type="text" class="form-control" id="input-startingDate" placeholder="Сlick here and select date" formControlName="startingDate" #dateDirectivePicker="dpDayPicker" [dpDayPicker]="config" theme="dp-material">
+                <input type="text" class="form-control" id="input-startingDate" placeholder="Выберите дату" formControlName="startingDate" #dateDirectivePicker="dpDayPicker" [dpDayPicker]="config" theme="dp-material">
               </div>
             </div>
             <div class="form-group row">
-              <label for="input-bank" class="col-sm-3">Choose bank:</label>
+              <label for="input-bank" class="col-sm-3">Банк:</label>
               <div class="col-sm-5">
                 <select class="form-control" id="input-bank" formControlName="bankId">
                   <option [value]="bank.bankId" *ngFor="let bank of bankMas">
@@ -57,24 +54,26 @@
                 </select>
               </div>
             </div>
-            <div class="alert alert-danger" *ngIf="creditForm.controls['amountOfCredit'].errors && creditForm.controls['amountOfCredit'].errors.required && creditForm.controls['amountOfCredit'].touched">Required amount of credit</div>
-            <div class="alert alert-danger" *ngIf="creditForm.controls['amountOfCredit'].errors && creditForm.controls['amountOfCredit'].errors.min">Minimum value of credit is 0</div>
-            <div class="alert alert-danger" *ngIf="creditForm.controls['timeOfCredit'].errors && creditForm.controls['timeOfCredit'].errors.required && creditForm.controls['timeOfCredit'].touched">Required time of credit</div>
-            <div class="alert alert-danger" *ngIf="creditForm.controls['timeOfCredit'].errors && creditForm.controls['timeOfCredit'].errors.min">Minimum time of credit is 1 mounth</div>
-            <div class="alert alert-danger" *ngIf="creditForm.controls['timeOfCredit'].errors && creditForm.controls['timeOfCredit'].errors.max">Maximum time of credit is 360</div>
-            <div class="alert alert-danger" *ngIf="creditForm.controls['percentOfCredit'].errors && creditForm.controls['percentOfCredit'].errors.required && creditForm.controls['percentOfCredit'].touched">Required time of credit</div>
-            <div class="alert alert-danger" *ngIf="creditForm.controls['percentOfCredit'].errors && creditForm.controls['percentOfCredit'].errors.min">Minimum percent is 0</div>
-            <div class="alert alert-danger" *ngIf="creditForm.controls['percentOfCredit'].errors && creditForm.controls['percentOfCredit'].errors.max">Maximum percent is 100</div>
-            <div class="alert alert-danger" *ngIf="creditForm.controls['percentOfCredit'].errors && creditForm.controls['percentOfCredit'].errors.patter">Incorrect percent</div>
+            <div class="alert alert-danger" *ngIf="creditForm.controls['amountOfCredit'].errors && creditForm.controls['amountOfCredit'].errors.required && creditForm.controls['amountOfCredit'].touched">Введите сумму кредита</div>
+              <div class="alert alert-danger" *ngIf="creditForm.controls['amountOfCredit'].errors && creditForm.controls['amountOfCredit'].errors.min">Минимальная сумма кредита - 0</div>
 
-            <div class="alert alert-danger" *ngIf="creditForm.controls['startingDate'].errors && creditForm.controls['startingDate'].errors.required && creditForm.controls['startingDate'].touched">Required date of starting credit</div>
+              <div class="alert alert-danger" *ngIf="creditForm.controls['timeOfCredit'].errors && creditForm.controls['timeOfCredit'].errors.required && creditForm.controls['timeOfCredit'].touched">Введите кол-во месяцев</div>
+              <div class="alert alert-danger" *ngIf="creditForm.controls['timeOfCredit'].errors && creditForm.controls['timeOfCredit'].errors.min">Минимальное число месяцев - 1</div>
+              <div class="alert alert-danger" *ngIf="creditForm.controls['timeOfCredit'].errors && creditForm.controls['timeOfCredit'].errors.max">Максимальное число месяцев - 360</div>
+
+              <div class="alert alert-danger" *ngIf="creditForm.controls['percentOfCredit'].errors && creditForm.controls['percentOfCredit'].errors.required && creditForm.controls['percentOfCredit'].touched">Введите процент по кредиту</div>
+              <div class="alert alert-danger" *ngIf="creditForm.controls['percentOfCredit'].errors && creditForm.controls['percentOfCredit'].errors.min">Минимальное число процента - 0</div>
+              <div class="alert alert-danger" *ngIf="creditForm.controls['percentOfCredit'].errors && creditForm.controls['percentOfCredit'].errors.max">Максимальное число процента - 100</div>
+              <div class="alert alert-danger" *ngIf="creditForm.controls['percentOfCredit'].errors && creditForm.controls['percentOfCredit'].errors.patter">Неверное число процентов</div>
+
+              <div class="alert alert-danger" *ngIf="creditForm.controls['startingDate'].errors && creditForm.controls['startingDate'].errors.required && creditForm.controls['startingDate'].touched">Выберите дату взятия кредита</div>
             <br>
-            <button class="btn btn-primary mr-4 mb-1" (click)="calculateCredit(creditForm)">Calculate</button>
-            <button class="btn btn-success mr-4 mb-1" *ngIf="isSaved==false && isCalculated==true" (click)="updateCredit()">Save</button>
-            <button class="btn btn-outline-primary mb-1" (click)="clearForm(creditForm)">Clear</button>
+            <button class="btn btn-primary mr-4 mb-1" (click)="calculateCredit(creditForm)">Расчитать</button>
+            <button class="btn btn-success mr-4 mb-1" *ngIf="isSaved==false && isCalculated==true" (click)="updateCredit()">Сохранить</button>
+            <button class="btn btn-outline-primary mb-1" (click)="clearForm(creditForm)">Очистить</button>
           </form>
         </div>
-        <div class="card-footer bg-success" *ngIf="isSaved==true"><h2 class="text-white text-center">SAVED SUCCESFULLY!</h2></div>
+        <div class="card-footer bg-success" *ngIf="isSaved==true"><h2 class="text-white text-center">УСПЕШНО СОХРАНЕНО!</h2></div>
       </div>
     </div>
 </div>

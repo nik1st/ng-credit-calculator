@@ -31,6 +31,12 @@ export class DBCreditsComponent implements OnInit {
     .subscribe();
     this.getCredits();
   }
+
+  exit(){
+    this._authService.exit();
+  }
+
+  
   ngOnInit() {
     this.getCredits();
 

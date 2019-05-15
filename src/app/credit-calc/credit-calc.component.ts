@@ -34,11 +34,11 @@ export class CreditCalcComponent implements OnInit {
               private _authService: AuthService,
               private _localStorageService: LocalStorageService) {
     this.creditForm = new FormGroup({
-      amountOfCredit: new FormControl(0, [Validators.required, Validators.min(0)]),
-      timeOfCredit: new FormControl(1, [Validators.required, Validators.min(1), Validators.max(360)]),
+      amountOfCredit: new FormControl(100000, [Validators.required, Validators.min(0)]),
+      timeOfCredit: new FormControl(10, [Validators.required, Validators.min(1), Validators.max(360)]),
       percentOfCredit: new FormControl(10, [Validators.required, Validators.min(0), Validators.max(100), Validators.pattern('^[-+]?[0-9]*[.,]?[0-9]+(?:[eE][-+]?[0-9]+)?$')]),
       startingDate: new FormControl(null, Validators.required),
-      bankId: new FormControl(Validators.required)
+      bankId: new FormControl("Введите банк",Validators.required)
     });
    }
 
@@ -81,10 +81,6 @@ export class CreditCalcComponent implements OnInit {
     {this.bankMas = result;})
   }
 
-
-  exit(){
-    this._authService.exit();
-  }
 
   ngOnInit() {
     this.getBanks();
