@@ -1,82 +1,17 @@
-/* You can add global styles to this file, and also import other style files */
-body{
-  background: #F5F5F5;
-}
 
 .jumbotron {
   padding: 2rem 2rem!important;
   margin-bottom: 0!important;;
 }
+
 .card {
   margin-bottom: 2rem!important;
-}
-
-.nav-item{
-font-weight: 800;
-text-transform: uppercase;
-}
-
-.calculator__history {
-  text-align: center;
-  max-height: 200px;
-  // margin-left: 585px;
-  width: 100%;
-  overflow: scroll;
-  border-bottom: 1px solid #2b84ee;
-}
-
-.calcontainer {
-  background-color: #343a40;
-  box-shadow: 0 0 30px grey;
-  border-radius: 4px;
-  margin: 20px auto 0;
-  width: 294px;
-  border: 2px solid #a8a8a8;
-}
-
-#panel {
-  /* calculator display */
-  text-align: right;
-  width: 251px;
-  height: 60px;
-  font-size: 26px;
-  background-color: white;
-  margin-bottom: 10px;
-  margin-top: 20px;
-  margin-left: 5px;
-  border: 1px solid #a8a8a8;
-}
-
-#panel:hover {
-  /* calculator display*/
-  cursor: col-resize;
-}
-
-.bttn {
-  /* button */
-  margin-bottom: 8px;
-  margin-left: 5px;
-  width: 59px;
-  height: 45px;
-  font-size: 22px;
-}
-
-.row-last{
-  margin-bottom: 10px;
-}
-
-
-
-.amount-money{
-  color: #35c251;
 }
 
 input.ng-touched.ng-invalid {border:solid red 2px;}
 input.ng-touched.ng-valid {border:solid green 2px;}
 
-.error_input{
-  color: red;
-}
+
 
 
 

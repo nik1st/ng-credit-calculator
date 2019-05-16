@@ -12,7 +12,7 @@ export class AuthService {
               private router: Router,
               private _localStorageService: LocalStorageService) { }
 
-  public userLogin: string;
+
 
 
   getUser(loginForm, passwordForm){
@@ -26,6 +26,7 @@ export class AuthService {
     return this._http.post('https://api-credit-base.herokuapp.com/api/user', JSON.stringify(userData), options);
   }
 
+
   createUser(loginForm, passwordForm){
     let userData = {login: loginForm, password: passwordForm};
     let headers: HttpHeaders = new HttpHeaders();
@@ -36,6 +37,8 @@ export class AuthService {
         };
     return this._http.put('https://api-credit-base.herokuapp.com/api/user', JSON.stringify(userData), options);
   }
+
+
   exit(){
     this._localStorageService.removeIdUser();
     this.router.navigate(['/auth']);
