@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { IdUser } from './auth.service';
-import { LocalStorageService } from './local-storage.service';
+
+
 @Injectable({
   providedIn: 'root'
 })

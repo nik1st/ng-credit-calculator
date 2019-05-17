@@ -8,12 +8,16 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-lg-auto">
-        <li class="nav-item">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item mr-2">
           <a routerLink="" class="nav-link">Главная</a>
         </li>
-        <li class="nav-item">
-            <a routerLink="/credit/allCredits" class="nav-link">Вход</a>
+        <li class="nav-item active mr-2">
+            <a routerLink="/credit/allCredits" class="nav-link" *ngIf="userLogin != null">{{userLogin}}</a>
+            <a routerLink="/credit/allCredits" class="btn btn-primary" *ngIf="userLogin == null">Вход</a>
+        </li>
+        <li class="nav-item" *ngIf="userLogin != null" >
+          <button class="btn btn-danger mr-3" (click)="exit()">Выход</button>
         </li>
       </ul>
     </div>

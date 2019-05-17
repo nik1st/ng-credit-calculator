@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
-import { AuthService, IdUser } from 'src/app/services/auth.service';
+import { AuthService, User } from 'src/app/services/auth.service';
 import { LocalResolver } from '@angular/compiler/src/compiler_util/expression_converter';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 
@@ -16,14 +16,16 @@ export class RegFormComponent implements OnInit {
               private _authService: AuthService,
               private _localStorageService: LocalStorageService) { }
 
-  public idUser: IdUser;
+  public user: User;
   public isLoginUnique = true;
 
   submit(myForm: NgForm){
-    this._authService.createUser(myForm.value.login, myForm.value.password).subscribe((result: IdUser)=>{
-      this.idUser = result; if(this.idUser.status == 1){
-        this.router.navigate(['/credit']);
-        this._localStorageService.setIdUser(this.idUser.id);
+    this._authService.createUser(myForm.value.login, myForm.value.password).subscribe((result: User)=>{
+      this.user = result; 
+      if(this.user.status == 1){
+        this.router.navigate(['/credit/allCredits']);
+        this._localStorageService.setIdUser(this.user.id);
+        this._localStorageService.setUserLogin( this.user.login);
       } else {
         this.isLoginUnique = false;
       }

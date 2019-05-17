@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { DbCreditsService, CreditData } from '../../services/db-credits.service';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -13,7 +13,8 @@ export class DBCreditsComponent implements OnInit {
   constructor(private _DbCreditsService: DbCreditsService,
                     private _authService: AuthService) { }
 
- userLogin = this._authService.userLogin;
+@Output() isOut = new EventEmitter<boolean>();
+
 
   credits : CreditData[] = [];
 
@@ -30,9 +31,6 @@ export class DBCreditsComponent implements OnInit {
     this.getCredits();
   }
 
-  exit(){
-    this._authService.exit();
-  }
 
   
   ngOnInit() {

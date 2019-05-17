@@ -1,4 +1,3 @@
-<button class="btn btn-danger mr-3 mb-2" (click)="exit()">Выход</button>
 <div class="col-lg-10 col-md-12 col-sm-12 col-12 mx-auto">
   <div class="table-responsive">
     <table class="table table-striped table-hover table-bordered" *ngIf="credits?.length>0">
@@ -28,4 +27,5 @@
       </tbody>
     </table>
   </div>
+  <h1 class="text-center" *ngIf="credits.length == 0">У вас пока нет кредитов :)</h1>
 </div>
