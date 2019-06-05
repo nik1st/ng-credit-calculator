@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container mb-3">
     <div class="col-12">
         <h1 class="display-5">Кредитный калькулятор</h1>
         <p>Наш кредитный калькулятор поможет вам рассчитать ежемесячный платеж и подобрать лучшие онлайн предложения. Чтобы начать расчет введите желаемую сумму кредита и остальные параметры.</p>
@@ -47,9 +47,9 @@
                                   <input type="text" class="form-control" id="input-startingDate" placeholder="Выберите дату" formControlName="startingDate" #dateDirectivePicker="dpDayPicker" [dpDayPicker]="config" theme="dp-material"><br>
                                 </div>
                               </div>
-                                <div class="form-group row">
+                                <div class="form-group  row">
                                 <label for="input-bank" class="col-sm-3">Банк:</label>
-                                  <div class="col-sm-5">
+                                  <div class="col-sm-6">
                                     <select class="form-control" id="input-bank" formControlName="bankId">
                                         <option [ngValue]="null" disabled>Выберите банк...</option>
                                       <option [value]="bank.bankId" *ngFor="let bank of bankMas">
@@ -58,6 +58,26 @@
                                     </select>
                                   </div>
                                 </div>
+                                <fieldset class="form-group">
+                                  <div class="row">
+                                    <legend for="input-type" class="col-form-label col-sm-3">Вид платежей:</legend>
+                                      <div class="col-sm-8">
+                                          <div class="form-check">
+                                            <input type="radio" class="form-check-input" name="radioButton" id="option1"  formControlName="radioButton" [value]="0" checked>
+                                            <label class="form-check-label">
+                                                  Аннуитетный
+                                            </label>
+                                          </div>
+                                          <div class="form-check">
+                                              <input type="radio" class="form-check-input" name="radioButton"  id="option2" formControlName="radioButton" [value]="1">
+                                              <label class="form-check-label">
+                                                  Дифференцированный
+                                              </label>
+                                          </div>
+                                        </div>
+                                      </div>  
+                                  </fieldset>
+                                <div class="alert alert-danger" *ngIf="creditForm.invalid && creditForm.touched">Заполните (выберите) все необходимые поля!</div>
                                 <div class="alert alert-danger" *ngIf="creditForm.controls['amountOfCredit'].errors && creditForm.controls['amountOfCredit'].errors.required && creditForm.controls['amountOfCredit'].touched">Введите сумму кредита</div>
                                 <div class="alert alert-danger" *ngIf="creditForm.controls['amountOfCredit'].errors && creditForm.controls['amountOfCredit'].errors.min">Минимальная сумма кредита - 0</div>
                   
@@ -102,6 +122,14 @@
                           <td>{{credit.mainDebt | number:'.0-2'}}</td>
                           <td>{{credit.amountOfPercent | number:'.0-2'}}</td>
                           <td>{{credit.debtOfCredit | number:'.0-2'}}</td>
+                      </tr>
+                      <tr *ngIf="summary > 0">
+                          <td scope="row"><i>Итого: </i></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td>{{summary  | number:'.0-2'}}</td>
+                          <td></td>
                       </tr>
                     </tbody>
                   </table>

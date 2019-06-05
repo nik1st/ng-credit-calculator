@@ -6,6 +6,7 @@ import {NgxMaskModule} from 'ngx-mask'
 import {DpDatePickerModule} from 'ng2-date-picker';
 import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
+import { ChartsModule } from 'ng2-charts';
 
 // СЕРВИСЫ
 import { LocalStorageService } from './services/local-storage.service';
@@ -23,6 +24,8 @@ import { AuthFormComponent } from '../app/user-forms/auth-form/auth-form.compone
 import { RegFormComponent } from '../app/user-forms/reg-form/reg-form.component';
 
 import { AuthGuard } from '../app/auth.guard';
+import { MyBarChartComponent } from './db-comps/db-credits/my-bar-chart/my-bar-chart.component';
+
 
 
 const appRoutes: Routes = [
@@ -45,7 +48,8 @@ const appRoutes: Routes = [
     DbPaymentsComponent,
     AuthFormComponent,
     RegFormComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    MyBarChartComponent
   ],
   imports: [
     NgxMaskModule.forRoot(),
@@ -54,7 +58,8 @@ const appRoutes: Routes = [
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    DpDatePickerModule
+    DpDatePickerModule,
+    ChartsModule,
   ],
   providers: [LocalStorageService, CreditService, DbCreditsService, AuthGuard, AuthService],
   bootstrap: [AppComponent]

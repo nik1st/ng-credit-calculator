@@ -1,3 +1,5 @@
+<h1 class="h1 text-center mb-3">Ваши кредиты</h1>
+<app-my-bar-chart *ngIf="credits?.length>0" [barChartLabels]="barChartLabels" [barChartData]="barChartData"></app-my-bar-chart>
 <div class="col-lg-10 col-md-12 col-sm-12 col-12 mx-auto">
   <div class="table-responsive">
     <table class="table table-striped table-hover table-bordered" *ngIf="credits?.length>0">
@@ -5,7 +7,7 @@
       <tr>
           <th></th>
           <th scope="col">Номер кредита</th>
-          <th scope="col">ID банка</th>
+          <th scope="col">Название банка</th>
           <th scope="col">Сумма кредита</th>
           <th scope="col">Период выплат(мес)</th>
           <th scope="col">Процент по кредиту</th>
@@ -17,7 +19,7 @@
         <tr *ngFor="let credit of credits">
             <td><button class="btn btn-warning btn-sm" (click)="deleteCredit(credit.idCredit)">УДАЛИТЬ</button></td>
             <th scope="row">{{credit.id}}</th>
-            <td>{{credit.idBank}}</td>
+            <td>{{credit.bankName}}</td>
             <td>{{credit.amount}}</td>
             <td>{{credit.paymentPeriod}}</td>
             <td>{{credit.percent}}</td>
@@ -27,5 +29,5 @@
       </tbody>
     </table>
   </div>
-  <h1 class="text-center" *ngIf="credits.length == 0">У вас пока нет кредитов :)</h1>
+  <h2 class="text-center" *ngIf="credits.length == 0 && pageIsLoaded">У вас пока нет кредитов :)</h2>
 </div>

@@ -1,6 +1,7 @@
-<a class="btn btn-outline-primary mb-2" routerLink="../../../allCredits">Назад</a>
+<div class="container-fluid mt-3">
+<a class="btn btn-outline-primary mb-3" routerLink="../../../allCredits">Назад</a>
 <div class="row justify-content-center">
-  <div class="col-lg-5 col-md-8 col-sm-12 col-12">
+  <div class="col-lg-7 col-md-8 col-sm-12 col-12">
     <div class="card border-secondary mb-3">
       <h4 class="card-header text-white bg-secondary mb-3">Кредитный калькулятор:</h4>
         <div class="card-body">
@@ -54,7 +55,27 @@
                 </select>
               </div>
             </div>
-            <div class="alert alert-danger" *ngIf="creditForm.controls['amountOfCredit'].errors && creditForm.controls['amountOfCredit'].errors.required && creditForm.controls['amountOfCredit'].touched">Введите сумму кредита</div>
+            <fieldset class="form-group">
+                <div class="row">
+                  <legend for="input-type" class="col-form-label col-sm-3">Вид платежей:</legend>
+                    <div class="col-sm-8">
+                        <div class="form-check">
+                          <input type="radio" class="form-check-input" name="radioButton" id="option1"  formControlName="radioButton" [value]="0" checked>
+                          <label class="form-check-label">
+                                Аннуитетный
+                          </label>
+                        </div>
+                        <div class="form-check">
+                            <input type="radio" class="form-check-input" name="radioButton"  id="option2" formControlName="radioButton" [value]="1">
+                            <label class="form-check-label">
+                                Дифференцированный
+                            </label>
+                        </div>
+                      </div>
+                    </div>  
+                </fieldset>
+              <div class="alert alert-danger" *ngIf="creditForm.invalid && creditForm.touched">Заполните (выберите) все необходимые поля!</div>
+              <div class="alert alert-danger" *ngIf="creditForm.controls['amountOfCredit'].errors && creditForm.controls['amountOfCredit'].errors.required && creditForm.controls['amountOfCredit'].touched">Введите сумму кредита</div>
               <div class="alert alert-danger" *ngIf="creditForm.controls['amountOfCredit'].errors && creditForm.controls['amountOfCredit'].errors.min">Минимальная сумма кредита - 0</div>
 
               <div class="alert alert-danger" *ngIf="creditForm.controls['timeOfCredit'].errors && creditForm.controls['timeOfCredit'].errors.required && creditForm.controls['timeOfCredit'].touched">Введите кол-во месяцев</div>
@@ -74,6 +95,17 @@
           </form>
         </div>
         <div class="card-footer bg-success" *ngIf="isSaved==true"><h2 class="text-white text-center">УСПЕШНО СОХРАНЕНО!</h2></div>
+      </div>
+    </div>
+    <div class="col-lg-5 col-md-4 col-sm-12 col-12">
+      <div style="display: block">
+        <canvas baseChart
+                [data]="[credit.amount, summary]"
+                [labels]="['Сумма кредита','Начисленные проценты']"
+                [chartType]="pieChartType"
+                [colors]="pieChartColors"
+                [legend]="pieChartLegend">
+        </canvas>
       </div>
     </div>
 </div>
@@ -100,7 +132,16 @@
             <td>{{payment.amountOfPercent | number:'.0-2'}}</td>
             <td>{{payment.debtOfCredit | number:'.0-2'}}</td>
         </tr>
+        <tr *ngIf="summary > 0">
+          <td scope="row"><i>Итого: </i></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>{{summary  | number:'.0-2'}}</td>
+          <td></td>
+      </tr>
       </tbody>
     </table>
   </div>
+</div>
 </div>
