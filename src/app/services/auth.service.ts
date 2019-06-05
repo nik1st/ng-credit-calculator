@@ -22,7 +22,7 @@ export class AuthService {
     let options = {
             headers: headers
         };
-    return this._http.post('http://localhost:3000/api/user', JSON.stringify(userData), options);
+    return this._http.post('https://api-credit-base.herokuapp.com/api/user', JSON.stringify(userData), options);
   }
 
 
@@ -34,7 +34,7 @@ export class AuthService {
     let options = {
             headers: headers
         };
-    return this._http.put('http://localhost:3000/api/user', JSON.stringify(userData), options);
+    return this._http.put('https://api-credit-base.herokuapp.com/api/user', JSON.stringify(userData), options);
   }
 
 
