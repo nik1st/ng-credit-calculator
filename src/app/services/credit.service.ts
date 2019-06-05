@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { summaryFileName } from '@angular/compiler/src/aot/util';
 
 
 @Injectable({
@@ -19,7 +18,7 @@ export class CreditService {
     let options = {
             headers: headers
         };
-        return this._http.post('http://localhost:3000/calc', JSON.stringify(credit), options);
+        return this._http.post('https://api-credit-base.herokuapp.com/calc', JSON.stringify(credit), options);
   }
 
   putCredit(bankId: number, amountCredit: number, timeCredit: number, percentCredit: number, startingDate: string, idUser: number, type: number, sum, creditMas: PaymentData[]){
@@ -30,7 +29,7 @@ export class CreditService {
     let options = {
             headers: headers
         };
-    return this._http.put('http://localhost:3000/api/credit', JSON.stringify(creditAndPayments), options);
+    return this._http.put('https://api-credit-base.herokuapp.com/api/credit', JSON.stringify(creditAndPayments), options);
   }
 
   updateCredit(idCredit: number, bankId: number, amountCredit: number, timeCredit: number, percentCredit: number, startingDate: string, type: number, sum, creditMas: PaymentData[]){
@@ -41,7 +40,7 @@ export class CreditService {
     let options = {
             headers: headers
         };
-    return this._http.post('http://localhost:3000/api/credit', JSON.stringify(creditAndPayments), options);
+    return this._http.post('https://api-credit-base.herokuapp.com/api/credit', JSON.stringify(creditAndPayments), options);
   }
 
   getBank(){

@@ -17,28 +17,28 @@ export class DbCreditsService {
     let idUser = this._localStorageService.getIdUser();
     let params = new HttpParams().set('id', idUser);
 
-    return this._http.get('http://localhost:3000/api/credits', {params: params});
+    return this._http.get('https://api-credit-base.herokuapp.com/api/credits', {params: params});
   }
 
   getPayments(idCredit){
 
     let params = new HttpParams().set('id', idCredit);
 
-    return this._http.get('http://localhost:3000/api/credit/payments', {params: params});
+    return this._http.get('https://api-credit-base.herokuapp.com/api/credit/payments', {params: params});
   }
 
   getOneCredit(idCredit){
 
     let params = new HttpParams().set('id', idCredit);
 
-    return this._http.get('http://localhost:3000/api/credit', {params: params});
+    return this._http.get('https://api-credit-base.herokuapp.com/api/credit', {params: params});
   }
 
   deleteCredit(idCredit){
     this.isDeleted.next(true);
     let params = new HttpParams().set('id', idCredit);
 
-    return this._http.delete('http://localhost:3000/api/credit', {params: params})
+    return this._http.delete('https://api-credit-base.herokuapp.com/api/credit', {params: params})
   }
 }
 
