@@ -59,6 +59,7 @@ export class Message{
 
 export class Response{
   public paymentMas : PaymentData[];
+  public summary: number;
 }
 
 export class BankData{
